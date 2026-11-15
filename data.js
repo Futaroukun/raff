@@ -7,7 +7,7 @@ window.PROFILE_CONFIG = {
   role: "Fullstack Developer & Systems Builder",
   location: "Indonesia",
   bio: "Fokus pada pengembangan automasi bot WhatsApp modular, utilitas Termux/Linux berkinerja tinggi, dan solusi sistem praktis.",
-  avatar: "", // Kosongkan untuk inisial otomatis, atau isi URL gambar
+  avatar: "icon.jpg",
   status: {
     available: true,
     text: "Tersedia untuk proyek"
