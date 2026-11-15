@@ -1,0 +1,433 @@
+/* ==========================================================================
+   Raff Simple Linktree System
+   Ultra-Fast, GPU-Accelerated & 60fps Lightweight Performance
+   ========================================================================== */
+
+:root {
+  /* Dark Theme (Default) */
+  --bg-page: #0C0D10;
+  --bg-card: #15171D;
+  --bg-card-hover: #1A1D24;
+  --bg-card-active: #20242D;
+
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-medium: rgba(255, 255, 255, 0.14);
+  --border-hover: rgba(255, 255, 255, 0.28);
+
+  --text-primary: #F3F4F6;
+  --text-secondary: #9CA3AF;
+  --text-muted: #6B7280;
+
+  --accent-base: #3B82F6;
+  --status-online: #10B981;
+
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.35);
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-full: 9999px;
+
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  /* Fast Hardware-Accelerated Timings */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-theme="light"] {
+  --bg-page: #F8F9FA;
+  --bg-card: #FFFFFF;
+  --bg-card-hover: #F1F3F5;
+  --bg-card-active: #E9ECEF;
+
+  --border-subtle: rgba(0, 0, 0, 0.06);
+  --border-medium: rgba(0, 0, 0, 0.12);
+  --border-hover: rgba(0, 0, 0, 0.24);
+
+  --text-primary: #111827;
+  --text-secondary: #4B5563;
+  --text-muted: #868E96;
+
+  --accent-base: #2563EB;
+  --status-online: #059669;
+
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* Reset & Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--font-sans);
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 1.25rem 1rem 2.5rem;
+  background-color: var(--bg-page);
+  /* Hapus radial-gradient berat yang membebani GPU/overdraw mobile */
+}
+
+/* Wrapper Layout */
+.wrapper {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* GPU-Accelerated Snappy Entrance */
+@keyframes quickFadeUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 8px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Top Nav */
+.top-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.15rem;
+  animation: quickFadeUp 200ms var(--ease-out) backwards;
+}
+
+.network-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.65rem;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  color: var(--text-secondary);
+}
+
+/* Zero-cost GPU-only pulse (tanpa animasi box-shadow berat) */
+.pulse-dot {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--status-online);
+}
+
+.pulse-dot::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  background-color: var(--status-online);
+  opacity: 0.4;
+  animation: pulsePing 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes pulsePing {
+  75%, 100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+.top-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: transform 120ms var(--ease-out), background-color 120ms ease, color 120ms ease;
+  will-change: transform;
+}
+
+.icon-btn svg {
+  width: 17px;
+  height: 17px;
+}
+
+.icon-btn:hover {
+  background-color: var(--bg-card-hover);
+  border-color: var(--border-medium);
+  color: var(--text-primary);
+  transform: translate3d(0, -1px, 0);
+}
+
+.icon-btn:active {
+  transform: scale(0.94);
+}
+
+[data-theme="dark"] .sun-icon { display: block; }
+[data-theme="dark"] .moon-icon { display: none; }
+[data-theme="light"] .sun-icon { display: none; }
+[data-theme="light"] .moon-icon { display: block; }
+
+/* Profile Header */
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.45rem;
+  padding: 0.25rem 0;
+  animation: quickFadeUp 220ms var(--ease-out) 40ms backwards;
+}
+
+.profile-avatar-wrap {
+  position: relative;
+  margin-bottom: 0.25rem;
+}
+
+.profile-avatar {
+  width: 78px;
+  height: 78px;
+  border-radius: var(--radius-full);
+  background: var(--bg-card);
+  border: 2px solid var(--border-medium);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+
+.profile-avatar span {
+  font-size: 1.75rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  color: var(--text-primary);
+}
+
+.profile-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.status-indicator {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background-color: var(--status-online);
+  border: 2px solid var(--bg-page);
+}
+
+.profile-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+}
+
+.name-row {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.profile-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.verified-badge {
+  width: 17px;
+  height: 17px;
+  color: var(--accent-base);
+}
+
+.profile-handle {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.profile-bio {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+  max-width: 340px;
+}
+
+/* Links Stack (Ultra-Lightweight & GPU Composited) */
+.links-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  width: 100%;
+}
+
+.link-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.85rem 1.15rem;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  color: var(--text-primary);
+  font-size: 0.92rem;
+  font-weight: 600;
+  box-shadow: var(--shadow-card);
+  cursor: pointer;
+  /* Animasi composited GPU hanya transform & opacity */
+  animation: quickFadeUp 240ms var(--ease-out) backwards;
+  transition: transform 120ms var(--ease-out),
+              background-color 100ms ease,
+              border-color 100ms ease;
+  will-change: transform;
+}
+
+/* Stagger cepat tanpa jeda menunggu lama */
+.link-btn:nth-child(1) { animation-delay: 60ms; }
+.link-btn:nth-child(2) { animation-delay: 100ms; }
+.link-btn:nth-child(3) { animation-delay: 140ms; }
+.link-btn:nth-child(4) { animation-delay: 180ms; }
+
+.link-btn:hover {
+  background-color: var(--bg-card-hover);
+  border-color: var(--border-hover);
+  transform: translate3d(0, -2px, 0);
+}
+
+.link-btn:active {
+  transform: scale(0.985);
+  background-color: var(--bg-card-active);
+  transition-duration: 40ms;
+}
+
+.link-btn-left {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.link-icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  color: var(--text-primary);
+  flex-shrink: 0;
+  transition: transform 140ms var(--ease-out);
+  will-change: transform;
+}
+
+.link-icon-box svg {
+  width: 20px;
+  height: 20px;
+}
+
+.link-btn:hover .link-icon-box {
+  transform: scale(1.1);
+}
+
+.link-title {
+  letter-spacing: -0.01em;
+}
+
+.link-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  transition: transform 140ms var(--ease-out), color 100ms ease;
+  will-change: transform;
+}
+
+.link-arrow svg {
+  width: 15px;
+  height: 15px;
+}
+
+.link-btn:hover .link-arrow {
+  color: var(--text-primary);
+  transform: translate3d(2px, -2px, 0);
+}
+
+/* Footer */
+.footer {
+  margin-top: 0.75rem;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  animation: quickFadeUp 200ms var(--ease-out) 200ms backwards;
+}
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translate3d(-50%, 20px, 0);
+  background-color: var(--text-primary);
+  color: var(--bg-page);
+  padding: 0.55rem 0.95rem;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 160ms var(--ease-out), opacity 120ms ease;
+  z-index: 100;
+}
+
+.toast.show {
+  transform: translate3d(-50%, 0, 0);
+  opacity: 1;
+}
+
+.toast-icon {
+  width: 14px;
+  height: 14px;
+}
+
+/* Reduced Motion Mode */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "linktree",
+  "version": "2.0.0",
+  "description": "Modern bio-link directory & landing page with no AI slop",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "linktree",
+    "biolink",
+    "portfolio",
+    "landing-page"
+  ],
+  "author": "Raff",
+  "license": "MIT"
+}

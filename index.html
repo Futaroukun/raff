@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Raff — Tautan Profil</title>
+  <meta name="description" content="Pusat tautan langsung WhatsApp, Saluran WhatsApp, Instagram, dan TikTok.">
+  <meta name="theme-color" content="#0C0D10">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Raff — Tautan Profil">
+  <meta property="og:description" content="Pusat tautan langsung WhatsApp, Saluran WhatsApp, Instagram, dan TikTok.">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="wrapper" id="main-content">
+    
+    <!-- Top Utility Bar: Theme Toggle & Quick Share -->
+    <header class="top-nav">
+      <div class="network-badge">
+        <span class="pulse-dot"></span>
+        <span class="badge-text" id="status-label">Aktif</span>
+      </div>
+
+      <div class="top-actions">
+        <button type="button" class="icon-btn" id="btn-theme" title="Beralih Tema" aria-label="Beralih Tema">
+          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+          </svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <button type="button" class="icon-btn" id="btn-share" title="Bagikan Halaman" aria-label="Bagikan Halaman">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+            <polyline points="16 6 12 2 8 6"></polyline>
+            <line x1="12" y1="2" x2="12" y2="15"></line>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Profile Header -->
+    <section class="profile-header">
+      <div class="profile-avatar-wrap">
+        <div class="profile-avatar" id="user-avatar">
+          <span>R</span>
+        </div>
+        <span class="status-indicator"></span>
+      </div>
+
+      <div class="profile-meta">
+        <div class="name-row">
+          <h1 class="profile-name" id="user-name">Raff</h1>
+          <svg class="verified-badge" viewBox="0 0 24 24" fill="none" title="Terverifikasi">
+            <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+          </svg>
+        </div>
+        <span class="profile-handle" id="user-handle">@raff</span>
+      </div>
+
+      <p class="profile-bio" id="user-bio">Software Builder & Systems Enthusiast</p>
+    </section>
+
+    <!-- Simple Buttons List (No description, clean tactile links) -->
+    <nav class="links-stack" id="links-stack" aria-label="Daftar Tautan"></nav>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>&copy; <span id="current-year">2026</span> Raff • Tautan Resmi</p>
+    </footer>
+
+  </main>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <svg class="toast-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="20 6 9 17 4 12"></polyline>
+    </svg>
+    <span id="toast-text">Tersalin ke papan klip</span>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
