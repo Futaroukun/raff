@@ -195,7 +195,36 @@
     if (footerTextEl) footerTextEl.textContent = config.footerText;
   }
 
+  // Avatar Expand / Collapse Interaction
+  function initAvatarToggle() {
+    const wrap = document.getElementById('avatar-wrap');
+    if (!wrap) return;
+
+    wrap.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isExpanded = wrap.classList.toggle('expanded');
+      wrap.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
+    });
+
+    wrap.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const isExpanded = wrap.classList.toggle('expanded');
+        wrap.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
+      }
+    });
+
+    // Ketika tidak diklik (klik di luar), kembalikan ke semula bulat dan kecil
+    document.addEventListener('click', (e) => {
+      if (wrap.classList.contains('expanded') && !wrap.contains(e.target)) {
+        wrap.classList.remove('expanded');
+        wrap.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
   initProfile();
+  initAvatarToggle();
   renderButtons();
   initContact();
   initTheme();

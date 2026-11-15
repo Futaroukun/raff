@@ -280,7 +280,10 @@ body {
 .profile-avatar-wrap {
   position: relative;
   margin-bottom: 0.85rem;
-  z-index: 1;
+  z-index: 2;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .profile-avatar {
@@ -294,11 +297,27 @@ body {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  transition: transform 160ms var(--ease-spring);
+  will-change: width, height, border-radius, transform, box-shadow;
+  transition: width 420ms cubic-bezier(0.34, 1.3, 0.64, 1),
+              height 420ms cubic-bezier(0.34, 1.3, 0.64, 1),
+              border-radius 420ms cubic-bezier(0.34, 1.3, 0.64, 1),
+              transform 420ms cubic-bezier(0.34, 1.3, 0.64, 1),
+              box-shadow 420ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 240ms ease;
 }
 
 .profile-avatar:hover {
   transform: scale(1.04);
+}
+
+/* Animasi Membesar & Mengotak saat di-klik */
+.profile-avatar-wrap.expanded .profile-avatar {
+  width: 148px;
+  height: 148px;
+  border-radius: 24px;
+  border-color: var(--accent-base);
+  transform: scale(1);
+  box-shadow: 0 0 0 5px var(--bg-card), 0 16px 36px rgba(0, 0, 0, 0.55);
 }
 
 .profile-avatar span {
@@ -306,12 +325,18 @@ body {
   font-weight: 700;
   font-family: var(--font-mono);
   color: var(--text-primary);
+  transition: font-size 420ms cubic-bezier(0.34, 1.3, 0.64, 1);
+}
+
+.profile-avatar-wrap.expanded .profile-avatar span {
+  font-size: 3.5rem;
 }
 
 .profile-avatar img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 420ms cubic-bezier(0.34, 1.3, 0.64, 1);
 }
 
 .status-indicator {
@@ -323,6 +348,15 @@ body {
   border-radius: 50%;
   background-color: var(--status-online);
   border: 2.5px solid var(--bg-card);
+  transition: bottom 420ms cubic-bezier(0.34, 1.3, 0.64, 1),
+              right 420ms cubic-bezier(0.34, 1.3, 0.64, 1),
+              transform 420ms cubic-bezier(0.34, 1.3, 0.64, 1);
+}
+
+.profile-avatar-wrap.expanded .status-indicator {
+  bottom: 6px;
+  right: 6px;
+  transform: scale(1.15);
 }
 
 .profile-meta {
