@@ -3,7 +3,7 @@
 
 window.PROFILE_CONFIG = {
   name: "Raff",
-  handle: "@raff",
+  handle: "@raff_editz2",
   role: "Fullstack Developer & Systems Builder",
   location: "Indonesia",
   bio: "Fokus pada pengembangan automasi bot WhatsApp modular, utilitas Termux/Linux berkinerja tinggi, dan solusi sistem praktis.",
@@ -21,7 +21,7 @@ window.PROFILE_CONFIG = {
       title: "WhatsApp Owner",
       subtitle: "Kontak langsung & diskusi kerjasama",
       badge: "Chat",
-      url: "https://wa.me/628xxxxxxxxxx",
+      url: "https://wa.me/6283854551575",
       icon: "whatsapp",
       accent: "whatsapp"
     },
@@ -30,7 +30,7 @@ window.PROFILE_CONFIG = {
       title: "WhatsApp Bot",
       subtitle: "Asisten bot cerdas & automasi interaktif",
       badge: "Mulai",
-      url: "https://wa.me/628yyyyyyyyyy",
+      url: "https://wa.me/6285722157719",
       icon: "bot",
       accent: "bot"
     },
@@ -48,7 +48,7 @@ window.PROFILE_CONFIG = {
       title: "Instagram",
       subtitle: "Aktivitas personal & pembaruan visual",
       badge: "Kunjungi",
-      url: "https://instagram.com/",
+      url: "https://instagram.com/raff_editz2",
       icon: "instagram",
       accent: "instagram"
     },
@@ -57,7 +57,7 @@ window.PROFILE_CONFIG = {
       title: "TikTok",
       subtitle: "Video demo bot & panduan singkat",
       badge: "Tonton",
-      url: "https://tiktok.com/@",
+      url: "https://tiktok.com/@rafli_editz2",
       icon: "tiktok",
       accent: "tiktok"
     }
