@@ -1,5 +1,5 @@
 // Konfigurasi Profil & Tautan
-// Ubah data di bawah sesuai informasi akun dan saluran Anda.
+// Ubah nomor telepon, tautan saluran, dan username sesuai akun Anda.
 
 window.PROFILE_CONFIG = {
   name: "Raff",
@@ -7,23 +7,32 @@ window.PROFILE_CONFIG = {
   role: "Fullstack Developer & Systems Builder",
   location: "Indonesia",
   bio: "Fokus pada pengembangan automasi bot WhatsApp modular, utilitas Termux/Linux berkinerja tinggi, dan solusi sistem praktis.",
-  avatar: "", // Kosongkan untuk inisial otomatis, atau isi URL gambar/foto
+  avatar: "", // Kosongkan untuk inisial otomatis, atau isi URL gambar
   status: {
     available: true,
     text: "Tersedia untuk proyek"
   },
   tags: ["Node.js", "Baileys", "Linux / Termux", "Automation"],
 
-  // 4 Tombol Tautan Utama dengan Subjudul Ringkas & Badge Aksi
+  // Daftar Tombol Tautan (WhatsApp Owner, WhatsApp Bot, Saluran WA, IG, TikTok)
   links: [
     {
-      id: "whatsapp",
-      title: "WhatsApp",
-      subtitle: "Chat langsung & diskusi proyek",
+      id: "whatsapp-owner",
+      title: "WhatsApp Owner",
+      subtitle: "Kontak langsung & diskusi kerjasama",
       badge: "Chat",
       url: "https://wa.me/628xxxxxxxxxx",
       icon: "whatsapp",
       accent: "whatsapp"
+    },
+    {
+      id: "whatsapp-bot",
+      title: "WhatsApp Bot",
+      subtitle: "Asisten bot cerdas & automasi interaktif",
+      badge: "Mulai",
+      url: "https://wa.me/628yyyyyyyyyy",
+      icon: "bot",
+      accent: "bot"
     },
     {
       id: "whatsapp-channel",
