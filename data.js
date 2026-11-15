@@ -65,8 +65,8 @@ window.PROFILE_CONFIG = {
 
   // Kontak Cepat
   quickContact: {
-    label: "Email Resmi",
-    value: "halo@raffdev.id"
+    label: "Email Bisnis",
+    value: "mraflisetiawan075@gmail.com"
   },
 
   // Teks Watermark Footer

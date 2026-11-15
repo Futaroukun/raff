@@ -131,12 +131,12 @@
     const valEl = document.getElementById('contact-val');
 
     if (config.quickContact) {
-      labelEl.textContent = config.quickContact.label || "Email Resmi";
-      valEl.textContent = config.quickContact.value || "halo@raffdev.id";
+      labelEl.textContent = config.quickContact.label || "Email Bisnis";
+      valEl.textContent = config.quickContact.value || "mraflisetiawan075@gmail.com";
     }
 
     card.addEventListener('click', () => {
-      const email = config.quickContact ? config.quickContact.value : "halo@raffdev.id";
+      const email = config.quickContact ? config.quickContact.value : "mraflisetiawan075@gmail.com";
       copyText(email, 'Email tersalin ke papan klip!');
 
       badgeText.textContent = "Tersalin!";
