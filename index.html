@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <title>Raff — Tautan Profil</title>
-  <meta name="description" content="Pusat tautan langsung WhatsApp, Saluran WhatsApp, Instagram, dan TikTok.">
+  <title>Raff — Pusat Tautan & Portofolio</title>
+  <meta name="description" content="Pusat komunikasi resmi dan tautan langsung WhatsApp, Saluran WhatsApp, Instagram, dan TikTok.">
   <meta name="theme-color" content="#0C0D10">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Raff — Tautan Profil">
-  <meta property="og:description" content="Pusat tautan langsung WhatsApp, Saluran WhatsApp, Instagram, dan TikTok.">
+  <meta property="og:title" content="Raff — Pusat Tautan & Portofolio">
+  <meta property="og:description" content="Pusat komunikasi resmi dan tautan langsung WhatsApp, Saluran WhatsApp, Instagram, dan TikTok.">
 
   <link rel="stylesheet" href="style.css">
 </head>
@@ -19,13 +19,13 @@
     
     <!-- Top Utility Bar: Theme Toggle & Quick Share -->
     <header class="top-nav">
-      <div class="network-badge">
+      <div class="network-badge" id="live-indicator">
         <span class="pulse-dot"></span>
         <span class="badge-text" id="status-label">Aktif</span>
       </div>
 
       <div class="top-actions">
-        <button type="button" class="icon-btn" id="btn-theme" title="Beralih Tema" aria-label="Beralih Tema">
+        <button type="button" class="icon-btn" id="btn-theme" title="Beralih Tema (Gelap / Terang)" aria-label="Beralih Tema">
           <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="4"></circle>
             <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
@@ -45,13 +45,15 @@
       </div>
     </header>
 
-    <!-- Profile Header -->
-    <section class="profile-header">
+    <!-- Rich Profile Card -->
+    <section class="profile-card">
+      <div class="card-pattern-strip" aria-hidden="true"></div>
+
       <div class="profile-avatar-wrap">
         <div class="profile-avatar" id="user-avatar">
           <span>R</span>
         </div>
-        <span class="status-indicator"></span>
+        <span class="status-indicator" title="Aktif"></span>
       </div>
 
       <div class="profile-meta">
@@ -62,17 +64,52 @@
           </svg>
         </div>
         <span class="profile-handle" id="user-handle">@raff</span>
+        <div class="role-badge" id="user-role">Fullstack Developer & Systems Builder</div>
       </div>
 
-      <p class="profile-bio" id="user-bio">Software Builder & Systems Enthusiast</p>
+      <p class="profile-bio" id="user-bio">
+        Fokus pada pengembangan automasi bot WhatsApp modular, utilitas Termux/Linux berkinerja tinggi, dan solusi sistem praktis.
+      </p>
+
+      <div class="tags-row" id="user-tags"></div>
     </section>
 
-    <!-- Simple Buttons List (No description, clean tactile links) -->
-    <nav class="links-stack" id="links-stack" aria-label="Daftar Tautan"></nav>
+    <!-- Links Section -->
+    <section class="links-section" aria-label="Daftar Tautan Utama">
+      <div class="section-title-wrap">
+        <span class="section-heading">Kanal & Tautan Utama</span>
+        <span class="section-badge">4 Terverifikasi</span>
+      </div>
+
+      <nav class="links-stack" id="links-stack"></nav>
+    </section>
+
+    <!-- Quick Direct Contact Card -->
+    <section class="contact-card" id="contact-card" role="button" tabindex="0" title="Klik untuk menyalin email">
+      <div class="contact-info">
+        <span class="contact-label" id="contact-label">Email Resmi</span>
+        <span class="contact-value" id="contact-val">halo@raffdev.id</span>
+      </div>
+      <div class="contact-action">
+        <span class="copy-badge" id="copy-badge-text">Salin</span>
+        <div class="contact-icon-wrap" id="contact-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+        </div>
+      </div>
+    </section>
 
     <!-- Footer -->
     <footer class="footer">
-      <p>&copy; <span id="current-year">2026</span> Raff • Tautan Resmi</p>
+      <div class="footer-meta">
+        <span>&copy; <span id="current-year">2026</span> Raff</span>
+        <span class="footer-sep">•</span>
+        <span>Direktori Mandiri</span>
+        <span class="footer-sep">•</span>
+        <span>GitHub Pages</span>
+      </div>
     </footer>
 
   </main>
