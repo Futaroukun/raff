@@ -101,6 +101,17 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+a, button, [role="button"], input {
+  -webkit-tap-highlight-color: transparent;
+  outline-color: transparent;
+}
+
+a:focus-visible, button:focus-visible, [role="button"]:focus-visible {
+  outline: 2px solid var(--accent-base);
+  outline-offset: 2px;
 }
 
 html {

@@ -67,5 +67,8 @@ window.PROFILE_CONFIG = {
   quickContact: {
     label: "Email Resmi",
     value: "halo@raffdev.id"
-  }
+  },
+
+  // Teks Watermark Footer
+  footerText: "Tautan Resmi"
 };

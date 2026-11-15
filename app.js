@@ -186,6 +186,14 @@
   }
 
   document.getElementById('current-year').textContent = new Date().getFullYear();
+  if (config.name) {
+    const authorEl = document.getElementById('footer-author');
+    if (authorEl) authorEl.textContent = config.name;
+  }
+  if (config.footerText) {
+    const footerTextEl = document.getElementById('footer-text');
+    if (footerTextEl) footerTextEl.textContent = config.footerText;
+  }
 
   initProfile();
   renderButtons();
